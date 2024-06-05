@@ -1,5 +1,3 @@
-
-
 """
 Crear una función que reciba como parámetros una lista de números y el path de un archivo. 
 La misma deberá guardar la lista en un archivo de texto.
@@ -195,4 +193,3 @@ def contar_elementos(path_poema: str) -> dict:
 
     
 # print(contar_elementos("Clase_15\practica_archivos\poema.txt"))
-

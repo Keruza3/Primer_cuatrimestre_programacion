@@ -13,7 +13,7 @@ def validar_puesto():
         retorno = print("Verifique que el campo ingresado sea un puesto valido.")
         puesto = input (f"Ingrese un puesto valido puesto: ").capitalize()
 #-------------------------------------------------------------------------------------------------    
-def validar_nombre_apellido(clave:str):
+def validar_nombre_apellido(clave:str) -> str:
 
     identificacion = input (f"Ingrese el {clave}: ")
     longitud = len(identificacion)
@@ -36,11 +36,10 @@ def validar_salario()-> int:
     salario = input("Ingrese el salario del empleado: ")
     minimo = 234315
 
-
     while salario.isnumeric() != True or int(salario) < minimo:
         salario = input("Salario inválido. Ingrese nuevamente el salario del empleado (mayor a $234315): ")
 
-    return salario
+    return int(salario)
 #------------------------------------------------------------------------------------------------- 
 def verificar_igualdad_id(clave:int, lista:list) -> bool:
 
@@ -56,27 +55,55 @@ def verificar_igualdad_id(clave:int, lista:list) -> bool:
 
     return retorno  
 #------------------------------------------------------------------------------------------------- 
-def json_csv() -> str:
+def controlar_ids(lista_empleados:list[dict]) -> int:
 
-    while True:
+    bandera = False
+
+    if lista_empleados != []:
+        for i in range(1, len(lista_empleados)):
+
+            id = int(lista_empleados[i]["ID"])
+
+            if bandera == False:
+
+                maximo = id
+
+                bandera = True
+
+            else:
+                if id > maximo:
+
+                    maximo = id
+
+    return maximo + 1
+#------------------------------------------------------------------------------------------------- 
+def modificar_caso(diccionario_empleado:dict, clave:str, retorno: str, funcion) -> str:
     
-        opcion = input("Quiere guardar los datos en un archivo tipo (1)CSV o (2)JSON: ")
-
-        retorno = ""
-
-        if opcion == "1":
-            retorno = "CSV"
-
-        else:
-            if opcion == "2":
-                retorno = "JSON"
-
-        if retorno == "":
-
-            print(f"\n (Tiene que ingresar un numero para elegir la opcion)\n")
-
-        else:
-            break
-
+    diccionario_empleado[clave] = funcion
+    retorno = f"Se modifico el {clave} correctamente.\n"
+    
     return retorno
 #------------------------------------------------------------------------------------------------- 
+def controlar_ids() -> int:
+    with open("Clase_15/AMB_ARCHIVOS/ids.txt", "r") as archivo:
+
+        ids = archivo.read()
+
+    with open("Clase_15/AMB_ARCHIVOS/ids.txt", "a") as archivo:
+        
+        if ids == "":
+            archivo.write("1")
+
+    with open("Clase_15/AMB_ARCHIVOS/ids.txt", "r") as archivo: 
+
+        ids = archivo.read()
+
+    caracteres = len(ids)
+    caracteres += 1
+    
+    with open("Clase_15/AMB_ARCHIVOS/ids.txt", "a") as archivo:
+        
+        caracteres = str(caracteres)
+        archivo.write(caracteres)
+    
+    return caracteres

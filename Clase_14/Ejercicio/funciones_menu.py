@@ -102,7 +102,6 @@ def modificar(lista_empleados: list[dict]) -> None:
         else:
             
             retorno = f"No se encontro a un empleado con el id: {ids}\n"
-
     
     return retorno
 

@@ -1,0 +1,14 @@
+{
+    "empleados":[
+
+                ]
+}
+[
+    {
+        "ID": "14",
+        "Nombre": "juan",
+        "Apellido": "ivo",
+        "Puesto": "Gerente",
+        "Salario": 22222222222
+    }
+]
