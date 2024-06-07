@@ -159,7 +159,6 @@ def crear_empleado(ids:int, lista_empleados:list) -> dict:
         retorno = "No se pudo eliminar al empleado"
 
     return retorno
-
 #------------------------------------------------------------------------------------------------- 
 def modificar(lista_empleados: list[dict]) -> None:
     
@@ -377,8 +376,7 @@ def ordenar_empleados() -> list[dict]:
 
     opcion_2 = input("Ingrese como quiere ordenar el menu: ")
 
-    while opcion_2 != "1" and opcion_2 != "2":
-        opcion_2 = input("Ingrese como quiere ordenar el menu: ")
+    
 
     match opcion:
         case "A":
